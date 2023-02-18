@@ -9,7 +9,7 @@ RED = "#eb3303"
 GREEN = "#a1b57d"
 BLACK = "#19282f"
 FONT_NAME = "Courier"
-WORK_MIN = 10
+WORK_MIN = 40
 SHORT_BREAK_MIN = 10
 LONG_BREAK_MIN = 10
 SOUND = "./resources/bell.wav"
@@ -70,9 +70,9 @@ def reset_timer():
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
     global reps
-    work_sec = WORK_MIN * 1
-    short_break = SHORT_BREAK_MIN * 1
-    long_break = LONG_BREAK_MIN * 1
+    work_sec = WORK_MIN * 60
+    short_break = SHORT_BREAK_MIN * 60
+    long_break = LONG_BREAK_MIN * 60
     
     reps += 1
 
