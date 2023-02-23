@@ -26,7 +26,7 @@ USER_DATA_PATH = os.path.join(application_path, user_data_path)
 if os.path.exists(USER_DATA_PATH):
     pass
 else:
-    os.mkdir("user_data")
+    os.makedirs(USER_DATA_PATH)
 
 # ---------------------------- CONSTANTS ------------------------------- #
 config = {}
@@ -37,7 +37,7 @@ except FileNotFoundError:
     with open(CONFIG, "w") as settings:
         config = {
             "work_min":40,
-            "short_break_min":10,
+            "break_min":10,
             "long_break_min":10,
             "background_color":"#d3eca7",
             "foreground_color":"#a1b57d",
