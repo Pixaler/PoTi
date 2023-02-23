@@ -1,3 +1,12 @@
+# v0.2.2
+## Changes
+1. Add all configuration options to ***settings.json***
+2. Clean code, improve file structure
+
+## Fixes
+1. I guess PoTi will update 'stats.json' with new date
+
+
 # v0.2.1
 ## Changes
 1. In 'settings.json' you can set duration of work, break and long break stages
