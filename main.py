@@ -7,6 +7,7 @@ from timer_process import TimerProcces
 
 sound_path = "./resources/bell.wav"
 image_path = "./resources/tomato.png"
+user_data_path = "./user_data"
 stats_path = "./user_data/stats.json"
 config_path = "./user_data/settings.json"
 
@@ -20,6 +21,12 @@ SOUND = os.path.join(application_path, sound_path)
 IMAGE = os.path.join(application_path, image_path)
 STATS = os.path.join(application_path, stats_path) 
 CONFIG = os.path.join(application_path, config_path)
+USER_DATA_PATH = os.path.join(application_path, user_data_path)
+
+if os.path.exists(USER_DATA_PATH):
+    pass
+else:
+    os.mkdir("user_data")
 
 # ---------------------------- CONSTANTS ------------------------------- #
 config = {}
