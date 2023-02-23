@@ -2,18 +2,44 @@ from tkinter import *
 from playsound import playsound
 import json
 from json import JSONDecodeError
-from datetime import date
+from datetime import datetime
+import os, sys
+# ---------------------------- SET WORKING DIRECTORY ------------------------------- #
+sound_path = "./resources/bell.wav"
+image_path = "./resources/tomato.png"
+
+# determine if application is a script file or frozen exe
+if getattr(sys, 'frozen', False):
+    application_path = os.path.dirname(sys.executable)
+elif __file__:
+    application_path = os.path.dirname(__file__)
+
+SOUND = os.path.join(application_path, sound_path)
+IMAGE = os.path.join(application_path, image_path)
+
 # ---------------------------- CONSTANTS ------------------------------- #
+try:
+    with open("settings.json", "r") as settings:
+        config = json.load(settings)
+except FileNotFoundError:
+    with open("settings.json", "w") as settings:
+        config = {
+            "work_min":40,
+            "short_break_min":10,
+            "long_break_min":10
+        }
+        json.dump(config, settings, indent=4)
+finally:
+    WORK_MIN = config["work_min"]
+    SHORT_BREAK_MIN = config["short_break_min"]
+    LONG_BREAK_MIN = config["long_break_min"]
+
 WHITE = "#d3eca7"
 RED = "#eb3303"
 GREEN = "#a1b57d"
 BLACK = "#19282f"
 FONT_NAME = "Courier"
-WORK_MIN = 40
-SHORT_BREAK_MIN = 10
-LONG_BREAK_MIN = 10
-SOUND = "./resources/bell.wav"
-IMAGE = "./resources/tomato.png"
+
 reps = 0
 mark = "" 
 timer = None
@@ -22,7 +48,8 @@ timer = None
 def reset_timer():
     global mark 
     global reps
-    today = str(date.today())
+    today = datetime.now()
+    today = today.strftime("%Y-%m-%d")
     work_sessions = len(mark)
     overal_hours = work_sessions * WORK_MIN // 60
     overal_mins = work_sessions * WORK_MIN % 60
@@ -38,6 +65,7 @@ def reset_timer():
     try:
         with open("stats.json", "r") as stats:
             data = json.load(stats)
+
     except (JSONDecodeError,FileNotFoundError):
         with open("stats.json", "w") as stats:
             json.dump(new_data, stats, indent=4)
@@ -57,7 +85,7 @@ def reset_timer():
             }
         data.update(new_data)
         with open("stats.json", "w") as stats:
-            json.dump(new_data, stats, indent=4)
+            json.dump(data, stats, indent=4)
     finally:
         mark = ""
         reps = 0
@@ -70,7 +98,7 @@ def reset_timer():
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
     global reps
-    work_sec = WORK_MIN * 60
+    work_sec = WORK_MIN * 60 
     short_break = SHORT_BREAK_MIN * 60
     long_break = LONG_BREAK_MIN * 60
     
