@@ -1,2 +1,4 @@
 # PoTi
-PoTi: Pomodor Timer
+PoTi: Pomodor Timer 
+
+OS: Windows
