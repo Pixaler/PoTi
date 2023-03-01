@@ -1,3 +1,11 @@
+# v0.3-pre.1
+
+## Fixes
+
+1. Statistics save on close app
+2. If completed sessions equal 0 - this not will be save
+3. Program content now centered
+
 # v0.2.3
 
 ## Fixes
