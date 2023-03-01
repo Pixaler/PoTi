@@ -54,3 +54,5 @@ finally:
 
 timer_process = TimerProcces(config)
 poti_ui = PoTiInterface(config, timer_process)
+
+timer_process.reset_timer()

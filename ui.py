@@ -12,36 +12,40 @@ class PoTiInterface():
         self.process = timer_process
 
         self.window = Tk()
+        self.window.geometry("600x450")
+        self.window.minsize(600, 450)
         self.window.title("Pomodoro")
         self.window.config(padx=100, pady=30,
                            bg=self.config["background_color"])
 
-        self.canvas = Canvas(
-            width=200, height=223, highlightthickness=0, bg=self.config["background_color"])
+        self.frame = Frame(bg=self.config["background_color"])
+        self.canvas = Canvas(self.frame,
+                             width=200, height=223, highlightthickness=0, bg=self.config["background_color"])
         self.tomato_image = PhotoImage(file=self.config['image'])
         self.canvas.create_image(100, 111, image=self.tomato_image)
         self.timer_text = self.canvas.create_text(
             103, 130, text="00:00", fill="white", font=(self.config["font_name"], 29, "bold"))
         self.canvas.grid(column=1, row=1)
 
-        self.name_label = Label(text="Timer", fg=self.config["foreground_color"], bg=self.config["background_color"], font=(
+        self.name_label = Label(self.frame, text="Timer", fg=self.config["foreground_color"], bg=self.config["background_color"], font=(
             self.config["font_name"], 38))
         self.name_label.grid(column=1, row=0)
         self.name_label.config(pady=10)
 
-        self.start_button = Button(text="Start", height=1, width=8, bg=self.config["background_color"], font=(
+        self.start_button = Button(self.frame, text="Start", height=1, width=8, bg=self.config["background_color"], font=(
             self.config["font_name"], 13, 'bold'), command=self.start_timer)
         self.start_button.grid(column=0, row=2)
         self.start_button.config(pady=10)
 
-        self.reset_button = Button(text="Reset", height=1, width=8, bg=self.config["background_color"], font=(
+        self.reset_button = Button(self.frame, text="Reset", height=1, width=8, bg=self.config["background_color"], font=(
             self.config["font_name"], 13, 'bold'), command=self.reset_timer)
         self.reset_button.grid(column=2, row=2)
         self.reset_button.config(pady=10)
 
-        self.tick_label = Label(bg=self.config["background_color"], fg=self.config["foreground_color"], font=(
+        self.tick_label = Label(self.frame, bg=self.config["background_color"], fg=self.config["foreground_color"], font=(
             self.config["font_name"], 16))
         self.tick_label.grid(column=1, row=3)
+        self.frame.place(anchor=CENTER, relx=.5, rely=.5)
 
         self.window.mainloop()
 
