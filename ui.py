@@ -45,6 +45,7 @@ class PoTiInterface():
         self.tick_label = Label(self.frame, bg=self.config["background_color"], fg=self.config["foreground_color"], font=(
             self.config["font_name"], 16))
         self.tick_label.grid(column=1, row=3)
+        self.tick_label.config(text=self.process.mark)
         self.frame.place(anchor=CENTER, relx=.5, rely=.5)
 
         self.window.mainloop()
@@ -92,3 +93,4 @@ class PoTiInterface():
             if self.process.reps % 2 == 0:
                 self.process.mark = f"{self.process.mark}" + "✓"
                 self.tick_label.config(text=self.process.mark)
+                self.process.update_stats()

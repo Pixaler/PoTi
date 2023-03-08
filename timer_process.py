@@ -9,8 +9,20 @@ class TimerProcces():
         self.reps = 0
         self.mark = ""
         self.config = config
+        self.get_data()
 
-    def reset_timer(self):
+    def get_data(self):
+        try:
+            with open(self.config["stats"], "r") as stats:
+                data = json.load(stats)
+                today = datetime.now().strftime("%Y-%m-%d")
+                sessions = data[today]["work_sessions"]
+                for _ in range(1, sessions + 1):
+                    self.mark = self.mark + "✓"
+        except (JSONDecodeError, FileNotFoundError):
+            pass
+
+    def update_stats(self):
         if len(self.mark) != 0:
             today = datetime.now()
             today = today.strftime("%Y-%m-%d")
@@ -35,8 +47,7 @@ class TimerProcces():
                     json.dump(new_data, stats, indent=4)
             else:
                 if today in data:
-                    work_sessions = work_sessions + \
-                        data[today]["work_sessions"]
+                    work_sessions = len(self.mark)
                     overal_hours = work_sessions * \
                         self.config["work_min"] // 60
                     overal_mins = work_sessions * self.config["work_min"] % 60
@@ -52,6 +63,6 @@ class TimerProcces():
                 data.update(new_data)
                 with open(self.config["stats"], "w") as stats:
                     json.dump(data, stats, indent=4)
-            finally:
-                self.mark = ""
-                self.reps = 0
+
+    def reset_timer(self):
+        self.reps = 0

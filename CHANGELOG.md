@@ -1,3 +1,11 @@
+# v0.3-pre.2
+
+## Changes
+
+1. Now statistics were saved on every closed sessions
+2. Reset button only resets stages,it doens't remove closed sessions mark
+3. On start up, program load work sessions and display certain amount of tick
+
 # v0.3-pre.1
 
 ## Fixes
