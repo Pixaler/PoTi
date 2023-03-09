@@ -19,7 +19,7 @@ class TimerProcces():
                 sessions = data[today]["work_sessions"]
                 for _ in range(1, sessions + 1):
                     self.mark = self.mark + "✓"
-        except (JSONDecodeError, FileNotFoundError):
+        except (JSONDecodeError, FileNotFoundError, KeyError):
             pass
 
     def update_stats(self):
