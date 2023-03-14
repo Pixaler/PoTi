@@ -1,3 +1,18 @@
+# v0.3
+
+## Changes
+
+1. Add new window with settings
+2. Now statistics were saved on every closed sessions
+3. Reset button only resets stages, it doens't remove closed sessions mark
+4. On start up, program load work sessions and display certain amount of tick
+
+## Fixes
+
+1. Statistics save on close app
+2. If completed sessions equal 0 - this not will be save
+3. Program content now centered
+
 # v0.3-pre.2
 
 ## Changes

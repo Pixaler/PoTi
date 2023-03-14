@@ -13,7 +13,7 @@ stats_path = "./user_data/stats.json"
 config_path = "./user_data/settings.json"
 
 # determine if application is a script file or frozen exe
-if getattr(sys, 'frozen', False):
+if getattr(sys, "frozen", False):
     application_path = os.path.dirname(sys.executable)
 elif __file__:
     application_path = os.path.dirname(__file__)
@@ -37,22 +37,23 @@ try:
 except FileNotFoundError:
     with open(CONFIG, "w") as settings:
         config = {
-            "work_min": 40,
-            "break_min": 10,
-            "long_break_min": 10,
+            "work_min": 25,
+            "break_min": 5,
+            "long_break_min": 15,
             "background_color": "#d3eca7",
             "foreground_color": "#a1b57d",
             "break_font_color": "#19282f",
             "long_break_font_color": "#eb3303",
-            "font_name": "Courier"
+            "font_name": "Courier",
         }
         json.dump(config, settings, indent=4)
 finally:
     config["sound"] = SOUND
     config["image"] = IMAGE
     config["stats"] = STATS
+    config["config"] = CONFIG
 
 timer_process = TimerProcces(config)
-poti_ui = PoTiInterface(config, timer_process)
+poti_ui = PoTiInterface(timer_process.config, timer_process)
 
 timer_process.reset_timer()
