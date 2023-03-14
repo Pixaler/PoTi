@@ -144,7 +144,7 @@ class PoTiInterface:
             self.config["background_color"] = bg_color_entry.get()
             self.config["foreground_color"] = fg_color_entry.get()
             self.config["break_font_color"] = break_font_color_entry.get()
-            self.config["long_break_font_color"] = long_break_min_entry.get()
+            self.config["long_break_font_color"] = long_break_font_color_entry.get()
             self.config["font_name"] = font_name_entry.get()
             self.process.save_config()
             settings_window.destroy()
@@ -154,7 +154,15 @@ class PoTiInterface:
             )
 
         def change_default():
-            self.process.default_config()
+            self.config["work_min"] = 25
+            self.config["break_min"] = 5
+            self.config["long_break_min"] = 15
+            self.config["background_color"] = "#d3eca7"
+            self.config["foreground_color"] = "#a1b57d"
+            self.config["break_font_color"] = "#19282f"
+            self.config["long_break_font_color"] = "#eb3303"
+            self.config["font_name"] = "Courier"
+            self.process.save_config()
             settings_window.destroy()
             messagebox.showinfo(
                 title="Done",

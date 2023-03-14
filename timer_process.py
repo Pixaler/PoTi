@@ -78,17 +78,3 @@ class TimerProcces:
                 "font_name": self.config["font_name"],
             }
             json.dump(new_config, config, indent=4)
-
-    def default_config(self):
-        with open(self.config["config"], "w") as settings:
-            config = {
-                "work_min": 25,
-                "break_min": 5,
-                "long_break_min": 15,
-                "background_color": "#d3eca7",
-                "foreground_color": "#a1b57d",
-                "break_font_color": "#19282f",
-                "long_break_font_color": "#eb3303",
-                "font_name": "Courier",
-            }
-            json.dump(config, settings, indent=4)
