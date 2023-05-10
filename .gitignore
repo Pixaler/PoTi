@@ -1,5 +1,14 @@
+/branches
+
+# Output directory
 /!output
+
+# Resource folder for PoTi
 /resources
-/__pycache__
+
+# Python directory 
+poti/__pycache__
+/venv
+
+# User data directory for Poti
 /user_data
-/prerelease

@@ -1,3 +1,10 @@
+# v0.4
+
+## Changes
+
+1. Move to customtkinter library
+2. Improve project structure
+
 # v0.3
 
 ## Changes

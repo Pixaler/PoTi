@@ -1,1 +1,5 @@
-playsound==1.3.0
+customtkinter
+darkdetect
+pydub
+tk
+CTkMessagebox
