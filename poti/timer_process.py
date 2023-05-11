@@ -1,5 +1,4 @@
-from pydub import AudioSegment
-from pydub.playback import play
+import pygame
 
 import poti.poti_ui as pu
 from poti.config import config
@@ -9,6 +8,7 @@ from poti.stats import update_stats
 reps = 0
 mark = ""
 
+pygame.mixer.init()
 
 def start_timer():
     work_sec = config.config['work_min'] * 60
@@ -42,8 +42,8 @@ def count_down(seconds):
     if seconds > 0:
         pu.app.timer = pu.app.after(1000, count_down, seconds - 1)
     else:
-        sound = AudioSegment.from_file(config["sound"])
-        play(sound)
+        pygame.mixer.music.load(config.config['sound'])
+        pygame.mixer.music.play(loops=0)
         start_timer()
 
         global reps
