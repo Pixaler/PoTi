@@ -1,3 +1,10 @@
+# 0.4.1
+
+## Changes
+
+1. Fix: bell now ring
+2. Change library to play sound
+
 # v0.4
 
 ## Changes
