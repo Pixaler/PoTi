@@ -1,15 +1,28 @@
 import json
 import os
+import sys
 
-SOUND_PATH = "resources/bell.wav"
-USER_DATA_FOLDER = "user_data"
-STATS_PATH = USER_DATA_FOLDER + "/stats.json"
-CONFIG_PATH = USER_DATA_FOLDER + "/settings.json"
+if getattr(sys, "frozen", False):
+    application_path = os.path.dirname(sys.executable)
+else:
+    application_path = os.getcwd()
+
+USER_DATA_FOLDER = os.path.join(application_path, "user_data")
+RESOURCES_FOLDER = os.path.join(application_path, "resources")
 
 if os.path.exists(USER_DATA_FOLDER):
     pass
 else:
     os.makedirs(USER_DATA_FOLDER)
+
+print(os.getcwd())
+SOUND_PATH = os.path.join(RESOURCES_FOLDER, "bell.wav")
+STATS_PATH = os.path.join(USER_DATA_FOLDER, "stats.json")
+CONFIG_PATH = os.path.join(USER_DATA_FOLDER, "settings.json")
+print(SOUND_PATH)
+print(STATS_PATH)
+print(CONFIG_PATH)
+
 
 def get_config():
         config = {}
