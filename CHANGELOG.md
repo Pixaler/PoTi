@@ -1,4 +1,9 @@
-# 0.4.1
+# v0.4.2
+# Fixes
+
+1. Fix user_data folder creation
+
+# v0.4.1
 
 ## Changes
 
