@@ -15,14 +15,9 @@ if os.path.exists(USER_DATA_FOLDER):
 else:
     os.makedirs(USER_DATA_FOLDER)
 
-print(os.getcwd())
 SOUND_PATH = os.path.join(RESOURCES_FOLDER, "bell.wav")
 STATS_PATH = os.path.join(USER_DATA_FOLDER, "stats.json")
 CONFIG_PATH = os.path.join(USER_DATA_FOLDER, "settings.json")
-print(SOUND_PATH)
-print(STATS_PATH)
-print(CONFIG_PATH)
-
 
 def get_config():
         config = {}
